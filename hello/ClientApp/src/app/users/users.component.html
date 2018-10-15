@@ -1,0 +1,11 @@
+<div class="list-group">
+  <a href="#" class="list-group-item" *ngFor="let user of (users | filter:filterOption:filterString)" (click)="onClick(user)">
+    <h3 class="list-group-item-heading">{{user.firstName}} {{user.lastName}}</h3>
+    <h4>Address:</h4>
+    <p class="list-group-item-text">{{user.address.country}}, {{user.address.city}}, {{user.address.street}}, {{user.address.appartments}}</p>
+    <h4>Phone numbers:</h4>
+      <p *ngFor="let phone of user.phoneNumbers">
+        {{phone}}
+      </p>
+  </a>
+</div>

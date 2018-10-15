@@ -1,0 +1,26 @@
+<button *ngIf="selectedUser && !createMode" class="btn btn-lg btn-success" (click)="create()">CreateTask</button>
+<ng-container *ngIf="selectedUser && createMode">
+  <label>Name</label>
+  <input type="text" [(ngModel)]="newTask.name" class="form-control" />
+  <label>Description</label>
+  <input type="text" [(ngModel)]="newTask.description" class="form-control" />
+  <label>Start time</label>
+  <input type="text" [(ngModel)]="newTask.formattedStartTime" class="form-control" />
+  <label>End time</label>
+  <input type="text" [(ngModel)]="newTask.formattedEndTime" class="form-control" />
+  <input type="button" value="Сохранить" (click)="save()" class="btn btn-sm btn-success" />
+  <input type="button" value="Отмена" (click)="cancel()" class="btn btn-sm btn-warning" />
+</ng-container>
+<div class="list-group" *ngIf="selectedUser && !createMode">
+  <div class="list-group-item" *ngFor="let task of tasks | tasksFilter:selectedUser" >
+      <h3 class="list-group-item-heading">{{task.name}}</h3>
+      <h4>Description:</h4>
+      <p class="list-group-item-text">{{task.description}}</p>
+      <h4>Start time:</h4>
+      <p>{{task.formattedStartTime}}</p>
+      <h4>End time:</h4>
+      <p>{{task.formattedEndTime}}</p>
+      <button class="btn btn-sm btn-danger" (click)="delete(task)">Delete</button>
+  </div>
+</div>
+  
